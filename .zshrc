@@ -28,6 +28,11 @@ zinit light Aloxaf/fzf-tab
 autoload -U compinit && compinit
 zinit cdreplay -q
 
+# Setup Vim package manager
+if [ ! -f "~/.vim/autoload/plug.vim" ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
