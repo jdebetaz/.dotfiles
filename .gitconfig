@@ -1,0 +1,8 @@
+[user]
+	name = Jonathan Debétaz
+	email = contact@jonathan-d.ch
+	signingKey = ""
+[gpg]
+	format = openpgp
+[init]
+	defaultBranch = main

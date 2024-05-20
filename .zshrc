@@ -69,6 +69,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
+alias ll='ls -al'
 
 # Shell integrations
 eval "$(fzf --zsh)"
