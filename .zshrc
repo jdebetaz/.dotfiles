@@ -26,10 +26,17 @@ zinit light Aloxaf/fzf-tab
 
 # Load completions
 autoload -U compinit && compinit
-zinit cdreplay -q:
+zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# OS Specific install
+if [[ $(uname) == "Darwin" ]]; then
+    source ~/.config/zsh/osx.zsh
+else
+    echo 'Unknown OS!'
+fi
 
 # Keybindings
 bindkey -e
@@ -51,7 +58,7 @@ setopt hist_find_no_dups
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 

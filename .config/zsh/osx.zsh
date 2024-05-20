@@ -1,0 +1,5 @@
+if [ -d '/opt/homebrew' ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+export PATH="/opt/homebrew/bin:$PATH"
