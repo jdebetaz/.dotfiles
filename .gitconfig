@@ -1,8 +1,13 @@
+[core]
+    autocrlf = input
+    editor = vim
 [user]
 	name = Jonathan Debétaz
 	email = contact@jonathan-d.ch
 	signingKey = ""
 [gpg]
-	format = openpgp
+    format = openpgp
+[fetch]
+    prune = true
 [init]
 	defaultBranch = main
