@@ -16,7 +16,7 @@ set showmatch
 " Vim plug
 call plug#begin('~/.vim/plugged')
 
-Plug 'haishanh/night-owl.vim'
+Plug 'artanikin/vim-synthwave84'
 
 call plug#end()
 
@@ -29,8 +29,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-colorscheme night-owl
-let g:lightline = { 'colorscheme': 'nightowl' }
+colorscheme synthwave84
+let g:lightline = { 'colorscheme': 'synthwave84' }
 
 " Remove trailing whitespace from Python files
 autocmd BufWritePre *.py :%s/\s\+$//e
