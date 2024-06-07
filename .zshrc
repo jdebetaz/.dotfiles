@@ -38,7 +38,7 @@ zinit cdreplay -q
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
 else
-    echo 'Unknown OS!'
+    echo "Unknown OS! $(uname)"
 fi
 
 # Keybindings
