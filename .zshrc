@@ -71,3 +71,6 @@ alias ll='ls -al'
 
 # Shell integrations
 eval "$(fzf --zsh)"
+
+# Created by `pipx` on 2024-05-31 16:50:16
+[[ ! -d "$HOME/.local/bin" ]] || export PATH="$PATH:$HOME/.local/bin"
