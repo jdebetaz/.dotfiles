@@ -45,8 +45,8 @@ fi
 
 # Keybindings
 bindkey -e
-# bindkey '^p' history-search-backward
-# bindkey '^n' history-search-forward
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 # History
 HISTSIZE=5000
@@ -76,3 +76,10 @@ eval "$(fzf --zsh)"
 
 # Created by `pipx` on 2024-05-31 16:50:16
 [[ ! -d "$HOME/.local/bin" ]] || export PATH="$PATH:$HOME/.local/bin"
+
+export GPG_TTY=$(tty)
+
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
