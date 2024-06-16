@@ -34,6 +34,12 @@ zinit cdreplay -q
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Created by `pipx` on 2024-05-31 16:50:16
+[[ ! -d "$HOME/.local/bin" ]] || export PATH="$PATH:$HOME/.local/bin"
+
+# Declare NVM_DIR if it exists
+[[ ! -d "$HOME/.nvm" ]] || export NVM_DIR="$HOME/.nvm"
+
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
@@ -73,9 +79,6 @@ alias ll='ls -al'
 
 # Shell integrations
 eval "$(fzf --zsh)"
-
-# Created by `pipx` on 2024-05-31 16:50:16
-[[ ! -d "$HOME/.local/bin" ]] || export PATH="$PATH:$HOME/.local/bin"
 
 export GPG_TTY=$(tty)
 
