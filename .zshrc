@@ -37,6 +37,9 @@ zinit cdreplay -q
 # Created by `pipx` on 2024-05-31 16:50:16
 [[ ! -d "$HOME/.local/bin" ]] || export PATH="$PATH:$HOME/.local/bin"
 
+# Add go binaries to path
+[[ ! -d "/usr/local/go" ]] || export PATH="$PATH:/usr/local/go/bin"
+
 # Declare NVM_DIR if it exists
 [[ ! -d "$HOME/.nvm" ]] || export NVM_DIR="$HOME/.nvm"
 
