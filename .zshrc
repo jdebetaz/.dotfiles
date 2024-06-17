@@ -43,6 +43,10 @@ zinit cdreplay -q
 # Declare NVM_DIR if it exists
 [[ ! -d "$HOME/.nvm" ]] || export NVM_DIR="$HOME/.nvm"
 
+# Setup NVM
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
@@ -86,3 +90,7 @@ eval "$(fzf --zsh)"
 export GPG_TTY=$(tty)
 unset SSH_AGENT_PID
 [[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]] &&  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
