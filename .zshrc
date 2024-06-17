@@ -46,8 +46,6 @@ zinit cdreplay -q
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
-elif [[ $(uname) == "Linux" ]]; then
-    source ~/.config/zsh/linux.zsh
 else
     source /etc/os-release
     DISTRO="$(echo $NAME | tr '[:upper:]' '[:lower:]')"
