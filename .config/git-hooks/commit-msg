@@ -11,14 +11,21 @@ yellow_color = "\033[1;33m"
 
 commit_msg_filepath = sys.argv[1]
 
-regex = re.compile(r"\A(?:(?P<type>[^\(!:]+)(?:\((?P<scope>[^\)]+)\))?(?P<breaking>!)?: (?P<description>.+))(?:(?!(?:\n{2}^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+)\n{2}(?P<body>(?:(?!\n{2}(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+).|\n+?)+?))?(?:\n{2}(?P<footers>(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+))?(?:\n*)\Z"m)
+# Conventionnal commit message regex
+conventional_commit_regex = re.compile(r"\A(?:(?P<type>[^\(!:]+)(?:\((?P<scope>[^\)]+)\))?(?P<breaking>!)?: (?P<description>.+))(?:(?!(?:\n{2}^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+)\n{2}(?P<body>(?:(?!\n{2}(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+).|\n+?)+?))?(?:\n{2}(?P<footers>(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+))?(?:\n*)\Z")
 
-with open(commit_msg_filepath, "r") as commit_msg_file:
+with open(commit_msg_filepath, 'r') as commit_msg_file:
     commit_msg = commit_msg_file.read()
-
-    if not regex.match(commit_msg):
-        print(f"{red_color}Commit message does not match the conventional commit format{color_off}")
+    if not conventional_commit_regex.match(commit_msg):
+        print(f"{red_color}Commit message does not match conventional commit message format{color_off}")
+        # Find errors in commit message
+        if not re.match(r"\A(?P<type>[^\(!:]+)(?:\((?P<scope>[^\)]+)\))?(?P<breaking>!)?: (?P<description>.+)", commit_msg):
+            print(f"{red_color}First line of commit message does not match conventional commit message format{color_off}")
+        if not re.match(r"(?:(?!\n{2}(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+).|\n+?)+?", commit_msg):
+            print(f"{red_color}Body of commit message does not match conventional commit message format{color_off}")
+        if not re.match(r"(?:^(?:BREAKING[ -]CHANGE|[a-zA-Z0-9_\-]+)(?:: | #\b)[^\n:]+(\n*\b)?)+", commit_msg):
+            print(f"{red_color}Footers of commit message does not match conventional commit message format{color_off}")
         sys.exit(1)
-    
-    print(f"{green_color}Commit message matches the conventional commit format{color_off}")
-    sys.exit(0)
+    else:
+        print(f"{green_color}Commit message matches conventional commit message format{color_off}")
+        sys.exit(0)
