@@ -8,13 +8,17 @@
 // from the command palette or from `Zed` application menu.
 {
   "autosave": "on_focus_change",
-  "theme": "SynthWave 84 Dark",
+  "theme": "Night Owl Dark",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "ui_font_family": "Fira Code",
   "buffer_font_family": "Fira Code",
   "terminal": {
     "font_family": "MesloLGS NF",
-    "font_size": 12
+    "font_size": 14,
+    "line_height": "standard"
+  },
+  "journal": {
+    "hour_format": "hour24"
   }
 }
