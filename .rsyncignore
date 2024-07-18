@@ -1,2 +1,6 @@
 node_modules/
 *filestore*/
+sources/
+*fs.zip
+*.dump
+*.sql
