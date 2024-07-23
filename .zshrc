@@ -93,5 +93,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Aliases
-alias ls='ls --color'
-alias ll='ls -al'
+alias ls='eza --icons --all'
+alias ll='eza -l --icons --all --git --git-repos --header'
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/ons-employee/.pulumi/bin
