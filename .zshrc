@@ -95,6 +95,4 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 alias ls='eza --icons --all'
 alias ll='eza -l --icons --all --git --git-repos --header'
-
-# add Pulumi to the PATH
-export PATH=$PATH:/home/ons-employee/.pulumi/bin
+alias cat='bat'
