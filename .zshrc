@@ -56,6 +56,8 @@ else
     [[ ! -f "$HOME/.config/zsh/$DISTRO.zsh" ]] || source "$HOME/.config/zsh/$DISTRO.zsh"
 fi
 
+[[ ! -f "$HOME/.config/zsh/local.zsh" ]] || source "$HOME/.config/zsh/local.zsh"
+
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
@@ -96,3 +98,11 @@ export NVM_DIR="$HOME/.nvm"
 alias ls='eza --icons --all'
 alias ll='eza -l --icons --all --git --git-repos --header'
 alias cat='bat'
+
+# pnpm
+export PNPM_HOME="/Users/jonathan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
