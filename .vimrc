@@ -32,5 +32,7 @@ endif
 colorscheme synthwave84
 let g:lightline = { 'colorscheme': 'synthwave84' }
 
+hi Normal guibg=NONE ctermbg=NONE
+
 " Remove trailing whitespace from Python files
 autocmd BufWritePre *.py :%s/\s\+$//e
