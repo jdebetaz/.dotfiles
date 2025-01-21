@@ -7,6 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
   "autosave": "on_focus_change",
   "theme": "Night Owl Dark",
   "ui_font_size": 16,
