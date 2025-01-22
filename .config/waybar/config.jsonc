@@ -47,8 +47,8 @@
     "interval": 3,
     "return-type": "json",
     "format-icons": {
-        "connected": " Secured",
-        "disconnected": "  Unsecured"
+        "connected": "<span> </span>Secured",
+        "disconnected": "<span>  </span>Unsecured"
     },
     "on-click": "exec ~/.config/waybar/wireguard-manager/wireguard-manager.sh -t",
     "exec": "exec ~/.config/waybar/wireguard-manager/wireguard-manager.sh -s",

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SERVICE_NAME="wg-quick@wg0"
+SERVICE_NAME="wg-quick@rednetwork"
 STATUS_CONNECTED_STR='{"text":"Connected","class":"connected","alt":"connected"}'
 STATUS_DISCONNECTED_STR='{"text":"Disconnected","class":"disconnected","alt":"disconnected"}'
 
