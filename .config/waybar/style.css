@@ -54,6 +54,8 @@ button:hover {
     background-color: #eb4d4b;
 }
 
+#custom-power,
+#custom-wireguard-manager,
 #pulseaudio,
 #clock,
 #battery,
@@ -105,6 +107,16 @@ button:hover {
 }
 
 #battery {
+    color: @green;
+    border-bottom: 2px solid @green;
+}
+
+#custom-wireguard-manager.disconnected {
+    color: @red;
+    border-bottom: 2px solid @red;
+}
+
+#custom-wireguard-manager.connected {
     color: @green;
     border-bottom: 2px solid @green;
 }

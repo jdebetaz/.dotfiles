@@ -47,8 +47,8 @@
     "interval": 3,
     "return-type": "json",
     "format-icons": {
-        "connected": "<span color=\"#50fa7b\">🔒 VNP</span>",
-        "disconnected": "<span color=\"#ff5555\">🔓 VPN</span>"
+        "connected": " Secured",
+        "disconnected": "  Unsecured"
     },
     "on-click": "exec ~/.config/waybar/wireguard-manager/wireguard-manager.sh -t",
     "exec": "exec ~/.config/waybar/wireguard-manager/wireguard-manager.sh -s",
