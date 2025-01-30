@@ -15,6 +15,8 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+autoload -U compinit && compinit
+
 # Add in Powerlevel10K
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -25,7 +27,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Load completions
-autoload -U compinit && compinit
+#autoload -U compinit && compinit
 zinit cdreplay -q
 
 # Setup Vim package manager
@@ -76,6 +78,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -89,4 +92,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Aliases
+alias ls='eza --icons --all'
+alias ll='eza -l --icons --all --git --git-repos --header'
 alias cat='bat'
