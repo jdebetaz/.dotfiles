@@ -43,10 +43,6 @@ zinit cdreplay -q
 # Declare NVM_DIR if it exists
 [[ ! -d "$HOME/.nvm" ]] || export NVM_DIR="$HOME/.nvm"
 
-# Setup NVM
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
@@ -62,6 +58,9 @@ fi
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
 
 # History
 HISTSIZE=5000
@@ -85,24 +84,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # Shell integrations
 eval "$(fzf --zsh)"
 
-export GPG_TTY=$(tty)
-unset SSH_AGENT_PID
-gpg-agent --daemon -q --enable-ssh-support
-[[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]] &&  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Aliases
-alias ls='eza --icons --all'
-alias ll='eza -l --icons --all --git --git-repos --header'
 alias cat='bat'
-
-# pnpm
-export PNPM_HOME="/Users/jonathan/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
