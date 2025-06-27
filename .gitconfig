@@ -1,13 +1,25 @@
 [core]
     autocrlf = input
     editor = vim
+    compression = 9
+    whitespace = error
+    preloadindex = true
+
 [user]
 	name = Jonathan Debétaz
 	email = contact@jonathan-d.ch
-	signingKey = ""
+    signingKey = ""
+
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHint = false
+
 [gpg]
     format = openpgp
+
 [fetch]
     prune = true
+
 [init]
 	defaultBranch = main

@@ -7,6 +7,16 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "autosave": "on_focus_change",
   "theme": "Night Owl Dark",
   "ui_font_size": 16,
@@ -20,5 +30,6 @@
   },
   "journal": {
     "hour_format": "hour24"
-  }
+  },
+  "lsp_document_colors": "background"
 }
