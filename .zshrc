@@ -40,19 +40,13 @@ zinit cdreplay -q
 # Add go binaries to path
 [[ ! -d "/usr/local/go" ]] || export PATH="$PATH:/usr/local/go/bin"
 
-# Declare NVM_DIR if it exists
-#[[ ! -d "$HOME/.nvm" ]] || export NVM_DIR="$HOME/.nvm"
-
 # Declar composer to path
 [[ ! -d "$HOME/.composer/vendor/bin" ]] || export PATH="$PATH:$HOME/.composer/vendor/bin"
-
-# Setup NVM
-#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Setup Volta
 [[ ! -d "$HOME/.volta" ]] || export PATH="$PATH:$HOME/.volta/bin"
 [[ ! -d "$HOME/.volta" ]] || export VOLTA_FEATURE_PNPM=1
+
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.config/zsh/osx.zsh
@@ -94,6 +88,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # Shell integrations
 eval "$(fzf --zsh)"
 
+# GPG SSH Agent
 export GPG_TTY=$(tty)
 unset SSH_AGENT_PID
 gpg-agent --daemon -q --enable-ssh-support
@@ -105,12 +100,7 @@ alias ls='eza --icons --all'
 alias ll='eza -l --icons --all --git --git-repos --header'
 alias cat='bat'
 
-# pnpm
-export PNPM_HOME="/Users/jonathan/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# OdooGhost
+[[ ! -f "$HOME/.local/bin/odooghost" ]] || alias ogs='odooghost stack'

@@ -8,7 +8,7 @@
 [user]
 	name = Jonathan Debétaz
 	email = contact@jonathan-d.ch
-    signingKey = ""
+	signingkey = ""
 
 [advice]
     addEmptyPathspec = false
@@ -23,3 +23,9 @@
 
 [init]
 	defaultBranch = main
+
+[commit]
+	gpgsign = false
+
+[tag]
+	gpgSign = false
