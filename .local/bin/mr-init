@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 import os
 import sys
+from pathlib import Path
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         sys.exit('Usage: mr-init <path>')
 
-    os.system('pnpm exec giget@latest gh:jdebetaz/mr-starter-kit {}'.format(sys.argv[1]))
-    os.system('cd {}'.format(sys.argv[1]))
-    os.system('pnpm install')
+    print('Initializing project... {}'.format(sys.argv[1]))
+
+    os.system('npx giget@latest gh:jdebetaz/mr-starter-kit {}'.format(sys.argv[1]))
