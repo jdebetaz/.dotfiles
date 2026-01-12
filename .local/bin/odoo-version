@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+from pprint import pp
+import sys
+import xmlrpc.client
+
+def get_version(url):
+    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+    pp(common.version())
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        sys.exit('Usage: odoo-version <url>')
+    get_version(sys.argv[1])
+

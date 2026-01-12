@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+import os
+import base64
+from pathlib import Path
+
+DIRECTORIES = {
+    'apps/',
+    'docs/',
+    'packages/'
+}
+
+FILES = {
+    'pnpm-workspace.yaml': 'cGFja2FnZXM6CiAgLSAiYXBwcy8qIgogIC0gInBhY2thZ2VzLyoiCg==',
+    '.gitignore': 'IyBFZGl0b3JzIHNwZWNpZmljCi5mbGVldAoudnNjb2RlCi5pZGVhCgojIERlcGVuZGVuY2llcyBhbmQgQWRvbmlzSlMgYnVpbGQKbm9kZV9tb2R1bGVzCmJ1aWxkCnRtcAoKIyBTZWNyZXRzCi5lbnYKLmVudi5sb2NhbAouZW52LnByb2R1Y3Rpb24ubG9jYWwKLmVudi5kZXZlbG9wbWVudC5sb2NhbAoKIyBGcm9udGVuZCBhc3NldHMgY29tcGlsZWQgY29kZSAmIFVwbG9hZHMKcHVibGljL2Fzc2V0cwpwdWJsaWMvdXBsb2FkcwoKIyBCdWlsZCB0b29scyBzcGVjaWZpYwpucG0tZGVidWcubG9nCipzdG9yeWJvb2subG9nCi5EU19TdG9yZQ==',
+    'docs/spec.md': ''
+}
+
+def create_directories():
+    for directory in DIRECTORIES:
+        Path(directory).mkdir(parents=True, exist_ok=True)
+
+def create_files():
+    for file, content in FILES.items():
+        if content == '':
+            Path(file).touch()
+        else:
+            Path(file).write_text(base64.b64decode(content).decode())
+
+def exec_commands():
+    os.system('pnpm init')
+    os.system('volta pin node pnpm')
+
+if __name__ == '__main__':
+    create_directories()
+    create_files()
+    exec_commands()
