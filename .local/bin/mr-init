@@ -6,7 +6,4 @@ from pathlib import Path
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         sys.exit('Usage: mr-init <path>')
-
-    print('Initializing project... {}'.format(sys.argv[1]))
-
     os.system('npx giget@latest gh:jdebetaz/mr-starter-kit {}'.format(sys.argv[1]))
