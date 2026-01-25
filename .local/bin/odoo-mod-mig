@@ -2,21 +2,16 @@
 
 set -e
 
-if [ "$#" -ne 4 ]; then
-  echo "Usage: $0 <repo> <module> <from_version> <to_version>"
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <module> <from_version> <to_version>"
   exit 1
 fi
 
-REPO="$1"
 MODULE="$2"
 FROM_VERSION="$3"
 TO_VERSION="$4"
 
 BRANCH="${TO_VERSION}-mig-${MODULE}"
-
-echo "▶ Cloning OCA/${REPO} (${TO_VERSION})"
-git clone https://github.com/beemytech/oca-${REPO}.git -b "${TO_VERSION}"
-cd "${REPO}"
 
 echo "▶ Creating migration branch ${BRANCH}"
 git checkout -b "${BRANCH}" "origin/${TO_VERSION}"
