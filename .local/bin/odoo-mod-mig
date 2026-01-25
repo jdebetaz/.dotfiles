@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ "$#" -ne 4 ]; then
+  echo "Usage: $0 <repo> <module> <from_version> <to_version>"
+  exit 1
+fi
+
+REPO="$1"
+MODULE="$2"
+FROM_VERSION="$3"
+TO_VERSION="$4"
+
+BRANCH="${TO_VERSION}-mig-${MODULE}"
+
+echo "▶ Cloning OCA/${REPO} (${TO_VERSION})"
+git clone https://github.com/beemytech/oca-${REPO}.git -b "${TO_VERSION}"
+cd "${REPO}"
+
+echo "▶ Creating migration branch ${BRANCH}"
+git checkout -b "${BRANCH}" "origin/${TO_VERSION}"
+
+echo "▶ Applying patches for module ${MODULE} (${FROM_VERSION} → ${TO_VERSION})"
+git format-patch \
+  --keep-subject \
+  --stdout \
+  "origin/${TO_VERSION}..origin/${FROM_VERSION}" \
+  -- "${MODULE}" \
+| git am -3 --keep
+
+echo "▶ Running pre-commit (pylint errors can be ignored)"
+pre-commit run -a || true
+
+echo "▶ Committing pre-commit auto fixes"
+git add -A
+git commit -m "[IMP] ${MODULE}: pre-commit auto fixes" --no-verify
+
+echo "✅ Done"
+echo "Branch: ${BRANCH}"
+
