@@ -7,9 +7,9 @@ if [ "$#" -ne 3 ]; then
   exit 1
 fi
 
-MODULE="$2"
-FROM_VERSION="$3"
-TO_VERSION="$4"
+MODULE="$1"
+FROM_VERSION="$2"
+TO_VERSION="$3"
 
 BRANCH="${TO_VERSION}-mig-${MODULE}"
 
