@@ -7,10 +7,5 @@ export PATH="/opt/homebrew/bin:$PATH"
 [[ -f "/opt/homebrew/bin/eza" ]] || brew install eza
 [[ -f "/opt/homebrew/bin/bat" ]] || brew install bat
 
-# pnpm
-export PNPM_HOME="/Users/jonathan/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Setup mise
+eval "$(mise activate zsh)"

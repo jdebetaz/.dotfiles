@@ -44,8 +44,8 @@ zinit cdreplay -q
 [[ ! -d "$HOME/.composer/vendor/bin" ]] || export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # Setup Volta
-[[ ! -d "$HOME/.volta" ]] || export PATH="$PATH:$HOME/.volta/bin"
-[[ ! -d "$HOME/.volta" ]] || export VOLTA_FEATURE_PNPM=1
+#[[ ! -d "$HOME/.volta" ]] || export PATH="$HOME/.volta/bin:$PATH"
+#[[ ! -d "$HOME/.volta" ]] || export VOLTA_FEATURE_PNPM=1
 
 # OS Specific install
 if [[ $(uname) == "Darwin" ]]; then
@@ -104,3 +104,6 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 # OdooGhost
 [[ ! -f "$HOME/.local/bin/odooghost" ]] || alias ogs='odooghost stack'
+
+# opencode
+export PATH=/Users/jonathan/.opencode/bin:$PATH
